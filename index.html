@@ -1,109 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
 
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Full-Screen Responsive Image Slider</title>
+  <title>Full-Screen Responsive Image Slider</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
-  <link rel="stylesheet" href="./style.css">
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  font-family: "Lexend", sans-serif;
-  background-color: #362a2b;
-  color: #e5ebf3;
-}
+    body {
+      font-family: "Lexend", sans-serif;
+      background-color: #000000;
+      color: #e5ebf3;
+    }
 
-.slider {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
+    .slider {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-.slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-}
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
 
-.slide.current {
-  opacity: 1;
-}
-
-
-.slide:first-child {
-  background: url("https://file.notion.so/f/s/d7a5bfa0-918b-4fa5-94fe-24b9ee2fccbe/%E5%9C%96%E7%89%871.png?id=1ff1fcd3-83ab-4dd1-a51c-19cb29d58f57&table=block&spaceId=d446e84b-78c1-4ecc-ab52-953aaf850fc3&expirationTimestamp=1681722973590&signature=HwzZeo5CwwrxJC-dLL-qvKZKjNnu7VHol9atbkBiukY&downloadName=%E5%9C%96%E7%89%871.png") no-repeat
-    center top/cover;
-}
-
-.slide:nth-child(2) {
-  background: url("https://file.notion.so/f/s/8b6923bc-088a-4106-9209-869329a207bc/IMG_1317_(1).jpg?id=6cc34898-58e3-4680-91fe-f60538c0c1b8&table=block&spaceId=d446e84b-78c1-4ecc-ab52-953aaf850fc3&expirationTimestamp=1681722989508&signature=0CldT_knxIGyWboB0P5wRNNV7W62iyMeYSuJqRd8D00&downloadName=IMG_1317+%281%29.jpg") no-repeat
-    center top/cover;
-}
-
-.slide:nth-child(3) {
-  background: url("https://file.notion.so/f/s/ae18ccf9-9488-4db2-a1f5-1f9ce2108f46/%E5%9C%96%E7%89%873.png?id=b9dada13-a102-4ece-b6f3-1ef501d51217&table=block&spaceId=d446e84b-78c1-4ecc-ab52-953aaf850fc3&expirationTimestamp=1681723010293&signature=OnmlSiX0YHP9dvp1EB7VZcZp3NaLznW-kzhTAsIaVY0&downloadName=%E5%9C%96%E7%89%873.png") no-repeat
-    center top/cover;
-}
+    .slide.current {
+      opacity: 1;
+    }
 
 
-.buttons button#prev {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-}
+    .slide:first-child {
+      background: url("https://file.notion.so/f/s/d7a5bfa0-918b-4fa5-94fe-24b9ee2fccbe/%E5%9C%96%E7%89%871.png?id=1ff1fcd3-83ab-4dd1-a51c-19cb29d58f57&table=block&spaceId=d446e84b-78c1-4ecc-ab52-953aaf850fc3&expirationTimestamp=1681722973590&signature=HwzZeo5CwwrxJC-dLL-qvKZKjNnu7VHol9atbkBiukY&downloadName=%E5%9C%96%E7%89%871.png") no-repeat center /contain;
+    }
 
-.buttons button#next {
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-}
+    .slide:nth-child(2) {
+      background: url("https://file.notion.so/f/s/8b6923bc-088a-4106-9209-869329a207bc/IMG_1317_(1).jpg?id=6cc34898-58e3-4680-91fe-f60538c0c1b8&table=block&spaceId=d446e84b-78c1-4ecc-ab52-953aaf850fc3&expirationTimestamp=1681722989508&signature=0CldT_knxIGyWboB0P5wRNNV7W62iyMeYSuJqRd8D00&downloadName=IMG_1317+%281%29.jpg") no-repeat center /contain;
+    }
 
-.buttons button {
-  border: 2px solid #e5ebf3;
-  background-color: transparent;
-  color: #e5ebf3;
-  cursor: pointer;
-  padding: 13px 15px;
-  border-radius: 50%;
-  outline: none;
-}
+    .slide:nth-child(3) {
+      background: url("https://file.notion.so/f/s/ae18ccf9-9488-4db2-a1f5-1f9ce2108f46/%E5%9C%96%E7%89%873.png?id=b9dada13-a102-4ece-b6f3-1ef501d51217&table=block&spaceId=d446e84b-78c1-4ecc-ab52-953aaf850fc3&expirationTimestamp=1681723010293&signature=OnmlSiX0YHP9dvp1EB7VZcZp3NaLznW-kzhTAsIaVY0&downloadName=%E5%9C%96%E7%89%873.png") no-repeat center /contain;
+    }
 
-.buttons button:hover {
-  background-color: #e5ebf3;
-  color: #362a2b;
-}
 
-@media (min-width: 640px) and (min-height: 640px) {
-  .slide .content {
-    bottom: 70px;
-    left: -600px;
-    width: 600px;
-    padding: 2rem;
-    line-height: 1.6;
-  }
+    .buttons button#prev {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+    }
 
-  .slide .content h1 {
-    font-size: 2rem;
-  }
+    .buttons button#next {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+    }
 
-  .slide.current .content {
-    transform: translateX(600px);
-  }
-}
-</style>
+    .buttons button {
+      border: 2px solid #e5ebf3;
+      background-color: transparent;
+      color: #e5ebf3;
+      cursor: pointer;
+      padding: 13px 15px;
+      border-radius: 50%;
+      outline: none;
+    }
+
+    .buttons button:hover {
+      background-color: #e5ebf3;
+      color: #362a2b;
+    }
+
+    @media (min-width: 640px) and (min-height: 640px) {
+      .slide .content {
+        bottom: 70px;
+        left: -600px;
+        width: 600px;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+
+      .slide .content h1 {
+        font-size: 2rem;
+      }
+
+      .slide.current .content {
+        transform: translateX(600px);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -124,7 +120,7 @@ body {
     const nextButton = document.getElementById("next");
     const prevButton = document.getElementById("prev");
     const auto = true;
-    const intervalTime = 5000;
+    const intervalTime = 3000;
     let slideInterval;
 
     const nextSlide = () => {
